@@ -1,0 +1,15 @@
+{
+    "version": "1.0",
+    "name": "PlanMetro",
+    "description": "Paris Metro map",
+    "launch_path": "/index.html",
+    "developer": {
+        "name": "Maurice Svay",
+        "url": "http://www.svay.com"
+    },
+    "installs_allowed_from": ["*"],
+    "icons": {
+        "60": "icon-60.png",
+        "128": "icon-128.png"
+    }
+}
