@@ -1,6 +1,6 @@
 # PlanMetro
 
-A simple Paris subway map for FirefoxOS
+A simple Paris subway map for Firefox OS
 
 ## Included code
 
