@@ -6,8 +6,7 @@ A simple Paris subway map for Firefox OS
 
 PlanMetro includes:
 
-* [Leaflet.js](https://github.com/Leaflet/Leaflet/blob/master/LICENSE)
-* [Zoomify Layer for Leaflet](https://github.com/kalse/zoomify-layer)
+* [OpenLayers](https://github.com/openlayers/openlayers)
 * [RATP open data map](http://data.ratp.fr)
 
 ## License
