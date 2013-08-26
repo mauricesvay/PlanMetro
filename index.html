@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>PlanMetro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link type="text/css" rel="stylesheet" href="js/leaflet/leaflet.css" />
     <style type="text/css">
     html, body {
         height: 100%;
@@ -16,32 +15,39 @@
         height: 100%;
         background: #ffebcd;
     }
+    .olControlZoom {
+        display: none;
+    }
     </style>
 </head>
 
 <body>
     <div id="map"></div>
-    <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
-    <script type="text/javascript" src="js/zoomify/zoomify_layer.js"></script>
+    <script type="text/javascript" src="js/OpenLayers-mobile-zoomify.js"></script>
     <script type="text/javascript">
-    var imageUrl = './tiles/tiles/';
-    var imageSize = {
-        width: 4600,
-        height: 4600
-    };
-    var layer = new ZoomifyLayer(imageUrl, imageSize);
-    var zoom = new L.Control.Zoom({position:'bottomright'});
-    var map = new L.Map(
-        'map',
-        {
-          minZoom: 2,
-          zoomControl: false,
-          attributionControl: false
-        }
+    var zoomify_width = 4600;
+    var zoomify_height = 4600;
+    var zoomify_url = './tiles/tiles/';
+    var map, zoomify;
+
+    var zoomify = new OpenLayers.Layer.Zoomify(
+        "Zoomify", 
+        zoomify_url, 
+        new OpenLayers.Size(zoomify_width, zoomify_height)
     );
-    map.setView(new L.LatLng(0,0), 0);
-    map.addLayer(layer);
-    map.addControl(zoom);
+    var options = {
+        maxExtent: new OpenLayers.Bounds(0, 0, zoomify_width, zoomify_height),
+        maxResolution: Math.pow(2, zoomify.numberOfTiers-1 ),
+        numZoomLevels: zoomify.numberOfTiers,
+        units: 'pixels'
+    };
+    map = new OpenLayers.Map("map", options);
+    map.addLayer(zoomify);
+
+    map.setBaseLayer(zoomify);
+    map.zoomToMaxExtent();
+    map.zoomIn();
+    map.zoomIn();
     </script>
 </body>
 </html>
