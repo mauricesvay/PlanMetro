@@ -48,10 +48,10 @@ for ($i=1; $i<=$steps; $i++) {
 
 	for ($y=0; $y < $h; $y+=$tilesize) {
 		for ($x=0; $x < $w; $x+=$tilesize) {
-			$tile = imagecreatetruecolor($tilesize, $tilesize);
-			imagefill($tile, 0, 0, $background);
 			$copy_width = min($tilesize, ($w-$x));
 			$copy_height = min($tilesize, ($h-$y));
+			$tile = imagecreatetruecolor($copy_width, $copy_height);
+			imagefill($tile, 0, 0, $background);
 
 			imagecopy(
 				$tile,
@@ -62,12 +62,12 @@ for ($i=1; $i<=$steps; $i++) {
 			);
 
 			// JPG
-			// $tilename = "tiles/" . $subfolder . "/" . $i . "-" . ($x / $tilesize) . "-" . ($y / $tilesize) . ".jpg";
-			// imagejpeg($tile, $tilename, 100);
+			$tilename = "tiles/" . $subfolder . "/" . $i . "-" . ($x / $tilesize) . "-" . ($y / $tilesize) . ".jpg";
+			imagejpeg($tile, $tilename, 95);
 
 			// PNG
-			$tilename = "tiles/" . $subfolder . "/" . $i . "-" . ($x / $tilesize) . "-" . ($y / $tilesize) . ".png";
-			imagepng($tile, $tilename);
+			// $tilename = "tiles/" . $subfolder . "/" . $i . "-" . ($x / $tilesize) . "-" . ($y / $tilesize) . ".png";
+			// imagepng($tile, $tilename);
 
 			$counter++;
 			if ($counter > 255) {
